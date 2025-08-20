@@ -1,2 +1,2 @@
 # CS2-F25-GitActivity
-First Repos Git Activity
+This repos holds sample projects for CS 1302 in Fall 2025
