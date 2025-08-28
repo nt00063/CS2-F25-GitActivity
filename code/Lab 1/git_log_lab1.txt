@@ -1,0 +1,26 @@
+commit 1092512ffecdc1ac7705fd40f8f25bfbf50905b8 (HEAD -> dev, origin/dev, origin/HEAD)
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:36:29 2025 -0400
+
+    Lab 1 Edits
+    >
+    > 1) Rearanged the view package with the BillPrinter class
+    > 2) Added constants and replaced magic numbers
+    > 3) Fixed all checkstyle warnings
+
+commit 8c39333fbcb128f6855ab6000eaebb63cab7196e
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:28:16 2025 -0400
+
+    Removed Unnecessary Files
+
+    1) Deleted files on Eclipse that were not needed
+
+commit 08d9438c839f34dd71ec73ceb49c4c84a9a3fe1f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 20:23:52 2025 -0400
+
+    Adding Base Project
+
+    1)Adding Eclipse project (Lab1) to /code
+
