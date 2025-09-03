@@ -15,5 +15,11 @@ public class TestConstructor {
 		assertEquals(12.5, item.getAmount(), 0.0001);
 	}
 	
+	@Test
+	public void testConstructorNullName() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new BillItem(null, 10.0);
+		});
+	}
 
 }
