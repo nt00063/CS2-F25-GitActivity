@@ -22,4 +22,12 @@ public class TestConstructor {
 		});
 	}
 
+	@Test
+	public void testConstructorZeroAmount() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new BillItem("Salad", 0.0);
+		});
+	}
+	
+	
 }
