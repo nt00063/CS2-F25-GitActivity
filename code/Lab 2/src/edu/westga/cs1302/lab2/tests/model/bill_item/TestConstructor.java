@@ -29,5 +29,10 @@ public class TestConstructor {
 		});
 	}
 	
-	
+	@Test
+	public void testConstructorNegativeAmount() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new BillItem("Soup", -5.0);
+		});
+	}
 }
