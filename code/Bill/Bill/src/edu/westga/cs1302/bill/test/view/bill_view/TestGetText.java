@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import edu.westga.cs1302.bill.model.Bill;
-import edu.westga.cs1302.bill.model.BillItem;
-import edu.westga.cs1302.bill.view.BillView;
+import edu.westga.cs1302.javafx_sample_starter.model.Bill;
+import edu.westga.cs1302.javafx_sample_starter.model.BillItem;
+import edu.westga.cs1302.javafx_sample_starter.views.BillView;
 
 class TestGetText {
 

@@ -1,4 +1,4 @@
-package edu.westga.cs1302.javafx_sample_starter;
+package edu.westga.cs1302.lab3;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * @version Fall 2025
  */
 public class Main extends Application {
-  private static final String WINDOW_TITLE = "JavaFX Starter Sample";
+  private static final String WINDOW_TITLE = "Lab 3";
   private static final String GUI_RESOURCE = "views/MainWindow.fxml";
 
   /**

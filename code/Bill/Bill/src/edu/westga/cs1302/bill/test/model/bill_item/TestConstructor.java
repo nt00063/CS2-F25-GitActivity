@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import edu.westga.cs1302.bill.model.BillItem;
+import edu.westga.cs1302.javafx_sample_starter.model.BillItem;
 
 class TestConstructor {
 
