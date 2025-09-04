@@ -15,6 +15,7 @@ public class BillView {
 	 * @precondition none
 	 * @postcondition none
 	 * 
+	 * @param bill the bill list
 	 * @return a String containing the list of bill items and total for the bill
 	 */
 	public String getText(Bill bill) {
