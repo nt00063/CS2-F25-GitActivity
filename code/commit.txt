@@ -1,0 +1,127 @@
+commit 0f1a6415856d023e4fbf54b7861b412f70fda451
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 20:13:50 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextMultipleItems to ensure outputs with multiple items work
+    2) Solved all of the checkstyle issues
+
+commit 26d0c72429ee210c5cd102f4f9f89104b09e8890
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:58:16 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextOneItem to ensure outputs with one item
+
+commit dee960215f1f11244b95746155a7b93a94a9355b
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:54:44 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextWithEmptyBill to ensure it can be empty
+
+commit 2fc53d57806fd119b66f45efdb351720c2657373
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:45:57 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorNegativeAmount to throw when the amount is negative
+
+commit fd374f8307714d4f293b337d2306c074af3307cb
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:44:09 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorZeroAmount to throw when the amount is zero
+
+commit 0669be83517441188804953513442c6b40fce139
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:41:32 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorNullName to make sure it is thrown when name is null
+
+commit 6a983de895f3a7f82199efb7a3cff97e9b8fe4cc
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:39:05 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testValidConstructor to make sure it works
+
+commit f33afe24c20701c696c3bace1eaa1c7ee06924f7
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:33:43 2025 -0400
+
+    Adding JUnit Tests to TestAddItem
+    
+    1) Tested that a null item fails
+    2) Tested that adding an item works
+
+commit 81eed7e4d004b18b978f876f47bb10ddb8c03d50
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Aug 28 12:09:16 2025 -0400
+
+    Adding Project Base
+    
+    1) Added the Lab 2 into \code
+
+commit b168daa306376e3ff4fb808647aa2b173ec5b2b8
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:51:11 2025 -0400
+
+    Upload Git Log
+    
+    1) Put the txt file inside of lab 1
+
+commit 1092512ffecdc1ac7705fd40f8f25bfbf50905b8
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:36:29 2025 -0400
+
+    Lab 1 Edits
+    >
+    > 1) Rearanged the view package with the BillPrinter class
+    > 2) Added constants and replaced magic numbers
+    > 3) Fixed all checkstyle warnings
+
+commit 8c39333fbcb128f6855ab6000eaebb63cab7196e
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:28:16 2025 -0400
+
+    Removed Unnecessary Files
+    
+    1) Deleted files on Eclipse that were not needed
+
+commit 08d9438c839f34dd71ec73ceb49c4c84a9a3fe1f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 20:23:52 2025 -0400
+
+    Adding Base Project
+    
+    1)Adding Eclipse project (Lab1) to /code
+
+commit bdb87d934f728c4f6319eb92b584476de17b4f73
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 20 12:33:04 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Eclipse project to /code/
+
+commit c6209f34ecb2fde9cbca96a54d6ecc8ea94e4225
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 20 12:12:29 2025 -0400
+
+    Adding Base Project Structure
+
+commit fcfb965712ab914957aa25663e3576b49a329abf
+Author: nt00063 <nt00063@my.westga.edu>
+Date:   Tue Aug 19 10:04:37 2025 -0400
+
+    Initial commit
