@@ -27,7 +27,7 @@ public class Main extends Application {
    * @throws IOException
    */
   @Override
-  public void start(Stage primaryStage) throws IOException {
+  public void start(@SuppressWarnings("exports")   Stage primaryStage) throws IOException {
     Parent parent = FXMLLoader.load(getClass().getResource(Main.GUI_RESOURCE));
     Scene scene = new Scene(parent);
     primaryStage.setTitle(WINDOW_TITLE);
