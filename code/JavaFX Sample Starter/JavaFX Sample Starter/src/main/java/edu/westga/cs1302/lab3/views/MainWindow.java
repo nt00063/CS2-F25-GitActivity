@@ -1,5 +1,7 @@
 package edu.westga.cs1302.lab3.views;
 
+import edu.westga.cs1302.lab3.model.Bill;
+import edu.westga.cs1302.lab3.model.BillItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -21,10 +23,20 @@ public class MainWindow {
 
 	    @FXML
 	    private TextField itemprice;
+	    
+	    private Bill currentBill;
+	    private BillView billView;
 
 	    @FXML
 	    void additem(ActionEvent event) {
-
+	    	String name = this.itemname.getText();
+	    	double price = Double.parseDouble(this.itemprice.getText());
+	    	
+	    	BillItem item = new BillItem(name, price);
+	    	this.currentBill.addItem(item);
+	    	
+	    	String billText = this.billView.getText(this.currentBill);
+	    	this.bill.setText(billText);
 	    }
     
     /**
@@ -32,5 +44,7 @@ public class MainWindow {
      */
     public void initialize() {
     	
+    	this.currentBill = new Bill();
+    	this.billView = new BillView();
     }
 }

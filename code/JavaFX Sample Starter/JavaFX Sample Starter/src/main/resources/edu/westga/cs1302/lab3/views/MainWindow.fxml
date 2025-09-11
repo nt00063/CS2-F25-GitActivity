@@ -13,10 +13,10 @@
    </padding>
    <children>
       <Label text="Item" />
-      <TextField fx:id="itemname" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="517.0" />
+      <TextField fx:id="itemname" prefHeight="0.0" prefWidth="517.0" />
       <Label text="Price" />
       <TextField fx:id="itemprice" />
       <Button mnemonicParsing="false" onAction="#additem" text="Add Item" />
-      <TextArea fx:id="bill" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="bill" editable="false" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </VBox>
