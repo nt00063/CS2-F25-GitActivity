@@ -1,5 +1,9 @@
 package edu.westga.cs1302.lab3.views;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -8,6 +12,20 @@ package edu.westga.cs1302.lab3.views;
  * @version Fall 2025
  */
 public class MainWindow {
+	
+	 @FXML
+	    private TextArea bill;
+
+	    @FXML
+	    private TextField itemname;
+
+	    @FXML
+	    private TextField itemprice;
+
+	    @FXML
+	    void additem(ActionEvent event) {
+
+	    }
     
     /**
      * Perform any needed initialization of UI components and underlying objects.
