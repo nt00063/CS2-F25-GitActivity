@@ -1,3 +1,36 @@
+commit 8904dea13364486e967e41c17bfcb871e93e3a2a
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 20:50:13 2025 -0400
+
+    Created TestBillCalculator class
+    
+    1) Made 7 test cases for list and array from the BillCalculator class
+    2) Completed all checkstyle warnings
+
+commit d9abc9f44267999c708944dd8abea7d31482abfd
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 19:40:38 2025 -0400
+
+    Updated BillView
+    
+    1) Updated the class after the changes made from BillCalculator
+
+commit 80ccde08534046452312a120702c49b46fd9e8fe
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 19:10:11 2025 -0400
+
+    Safer Data Class
+    
+    1) Made the fields of BillItem class final
+
+commit e80f4afea07bc5285e27036491b2925ba158bf70
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 18:59:11 2025 -0400
+
+    Adding Projec Base
+    
+    1) Adding starterLab4 to \code
+
 commit 0a07b4913ea5ac3fd77a6f5bf1684bd39388a06c
 Author: Noah Toups <nt00063@my.westga.edu>
 Date:   Wed Sep 10 22:40:26 2025 -0400
