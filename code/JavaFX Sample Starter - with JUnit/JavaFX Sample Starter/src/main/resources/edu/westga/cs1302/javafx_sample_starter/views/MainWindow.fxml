@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<AnchorPane xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tasktracker.MainWindow"
+            prefWidth="400" prefHeight="600">
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.javafx_sample_starter.views.MainWindow" />
+    <children>
+        <!-- Task Name -->
+        <Label layoutX="10" layoutY="10" text="Task Name:"/>
+        <TextField fx:id="nameField" layoutX="120" layoutY="10" prefWidth="250"/>
+
+        <!-- Description -->
+        <Label layoutX="10" layoutY="50" text="Description:"/>
+        <TextArea fx:id="descriptionArea" layoutX="120" layoutY="50" prefWidth="250" prefHeight="80"/>
+
+        <!-- Priority -->
+        <Label layoutX="10" layoutY="150" text="Priority:"/>
+        <ComboBox fx:id="priorityComboBox" layoutX="120" layoutY="150" prefWidth="150"/>
+
+        <!-- Add Task Button -->
+        <Button text="Add Task" layoutX="280" layoutY="150" onAction="#handleAddTask"/>
+
+        <!-- Task List -->
+        <ListView fx:id="taskListView" layoutX="10" layoutY="200" prefWidth="360" prefHeight="350"/>
+    </children>
+</AnchorPane>
