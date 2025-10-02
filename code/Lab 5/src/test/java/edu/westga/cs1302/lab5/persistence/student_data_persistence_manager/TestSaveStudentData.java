@@ -13,6 +13,11 @@ import edu.westga.cs1302.lab5.persistence.StudentDataPersistenceManager;
 
 class TestSaveStudentData {
 
+	/**
+	 * Tests if the save is in the correct format
+	 * 
+	 * @throws IOException
+	 */
     @Test
     void testSaveWritesCorrectCSVFormat() throws IOException {
         Student[] students = {
@@ -28,6 +33,10 @@ class TestSaveStudentData {
         assertEquals("Bob,87", lines.get(1));
     }
 
+    /**
+     * Tests if the save is null
+     * 
+     */
     @Test
     void testSaveThrowsForNullArray() {
         assertThrows(IllegalArgumentException.class, () -> {

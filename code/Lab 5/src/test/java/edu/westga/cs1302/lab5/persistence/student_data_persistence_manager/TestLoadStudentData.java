@@ -12,6 +12,11 @@ import edu.westga.cs1302.lab5.persistence.StudentDataPersistenceManager;
 
 class TestLoadStudentData {
 
+	/**
+	 * Tests if the Load reads the format correctly
+	 * 
+	 * @throws IOException
+	 */
     @Test
     void testLoadReadsCSVCorrectly() throws IOException {
         try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {
@@ -29,6 +34,10 @@ class TestLoadStudentData {
         assertEquals(87, students[1].getGrade());
     }
 
+    /**
+     * Tests if the load is invalid and what to do
+     * @throws IOException
+     */
     @Test
     void testLoadThrowsForInvalidCSV() throws IOException {
         try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {

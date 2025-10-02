@@ -1,4 +1,2 @@
-aaa
-1
-ddd
-3
+Alice,92
+Bob,87
