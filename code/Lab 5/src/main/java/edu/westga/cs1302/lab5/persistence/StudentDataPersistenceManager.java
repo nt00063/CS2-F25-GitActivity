@@ -33,8 +33,7 @@ public class StudentDataPersistenceManager {
 		}
 		try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {
 			for (Student currStudent : students) {
-				writer.write(currStudent.getName() + System.lineSeparator());
-				writer.write(currStudent.getGrade() + System.lineSeparator());
+				writer.write(currStudent.getName() + "," + currStudent.getGrade() + System.lineSeparator());
 			}
 		}
 	}
@@ -54,11 +53,13 @@ public class StudentDataPersistenceManager {
 		
 		try (Scanner reader = new Scanner(inputFile)) {
 			while (reader.hasNextLine()) {
-				String name = reader.nextLine();
-				if (!reader.hasNextLine()) {
-					throw new IOException("missing grade for " + name);
+				String line = reader.nextLine();
+				String[] parts = line.split(",");
+				if (parts.length != 2) {
+					throw new IOException("Invalid format for line: " + line);
 				}
-				int grade = Integer.parseInt(reader.nextLine());
+				String name = parts[0].trim();
+				int grade = Integer.parseInt(parts[1].trim());
 				students.add(new Student(name, grade));
 			}
 		} catch (NumberFormatException error) {
