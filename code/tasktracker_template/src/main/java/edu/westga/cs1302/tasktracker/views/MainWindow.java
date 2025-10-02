@@ -1,81 +1,69 @@
 package edu.westga.cs1302.tasktracker.views;
 
-import edu.westga.cs1302.tasktracker.model.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
+/**
+ * Controller for the main window of Task Tracker application.
+ * Handles user input and updates the task list.
+ * 
+ * @author NoahG
+ * @version Fall 2025
+ */
 public class MainWindow {
 
     @FXML
-    private TextField nameField;
+    private TextField taskNameField;
 
     @FXML
-    private TextArea descriptionArea;
+    private TextArea taskDescriptionArea;
 
     @FXML
-    private ComboBox<String> priorityComboBox;
+    private ComboBox<Integer> priorityComboBox;
 
     @FXML
     private Button addTaskButton;
 
     @FXML
-    private ListView<Task> taskListView;
+    private ListView<String> taskListView;
 
-    @FXML
-    private TextArea selectedDescriptionArea;
-
-    @FXML
-    private TextField selectedPriorityField;
-
+    /**
+     * Initializes the controller.
+     */
     @FXML
     public void initialize() {
-        priorityComboBox.getItems().addAll("Low", "Medium", "High");
-
-        // Listener to display selected task
-        taskListView.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> {
-                if (newValue != null) {
-                    selectedDescriptionArea.setText(newValue.getDescription());
-                    selectedPriorityField.setText(newValue.getPriority());
-                } else {
-                    selectedDescriptionArea.clear();
-                    selectedPriorityField.clear();
-                }
-            }
-        );
+        // Initialize combo box with priorities
+        this.priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
     }
 
+    /**
+     * Handles the Add Task button click.
+     */
     @FXML
-    private void handleAddTask() {
-        String name = nameField.getText();
-        String description = descriptionArea.getText();
-        String priority = priorityComboBox.getValue();
+    public void handleAddTask() {
+        String name = this.taskNameField.getText();
+        String description = this.taskDescriptionArea.getText();
+        Integer priority = this.priorityComboBox.getValue();
 
-        if (name == null || name.isEmpty() || priority == null || priority.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Name and Priority are required.");
+        if (name == null || name.isBlank() || priority == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Input Error");
+            alert.setHeaderText("Missing Task Information");
+            alert.setContentText("Please provide a name and priority for the task.");
             alert.showAndWait();
             return;
         }
 
-        Task newTask = new Task(name, description, priority);
-        taskListView.getItems().add(newTask);
+        String taskEntry = String.format("%s - %s (Priority %d)", name, description, priority);
+        this.taskListView.getItems().add(taskEntry);
 
-        nameField.clear();
-        descriptionArea.clear();
-        priorityComboBox.getSelectionModel().clearSelection();
-    }
-
-    // 3.C – Update the description of the selected task
-    @FXML
-    private void handleUpdateDescription() {
-        Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
-        if (selectedTask != null) {
-            String newDescription = selectedDescriptionArea.getText();
-            selectedTask.setDescription(newDescription);
-            taskListView.refresh();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "No task selected.");
-            alert.showAndWait();
-        }
+        this.taskNameField.clear();
+        this.taskDescriptionArea.clear();
+        this.priorityComboBox.setValue(null);
     }
 }

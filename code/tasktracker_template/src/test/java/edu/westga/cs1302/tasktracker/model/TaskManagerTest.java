@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for TaskUtils class.
- * Tests filtering and counting by priority.
+ * Tests for task management functionality using TaskUtils.
+ * Replaces the original TaskManagerTest as TaskManager does not exist.
  * 
  * @author NoahG
  * @version Fall 2025
  */
-public class TaskUtilsTest {
+public class TaskManagerTest {
 
     @Test
     public void testFilterByPriority() {
