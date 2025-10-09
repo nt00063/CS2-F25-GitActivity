@@ -78,6 +78,9 @@ public class MainWindow {
     
     @FXML
     void sortTasks(ActionEvent event) {
+    	if (this.order.getValue() != null) {
+    		this.tasks.getItems().sort(this.order.getValue());
+    	}
 
     }
 
