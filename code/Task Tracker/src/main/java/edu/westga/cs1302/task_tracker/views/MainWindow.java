@@ -90,5 +90,35 @@ public class MainWindow {
     public void initialize() {
     	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
     	this.priority.setValue(this.priority.getItems().get(0));
+    	this.order.getItems().addAll(new edu.westga.cs1302.task_tracker.model.Ascending(), new edu.westga.cs1302.task_tracker.model.Descending());
+    	this.order.setPromptText("Select order...");
+
+    	this.order.setButtonCell(new javafx.scene.control.ListCell<Comparator<Task>>() {
+    	    @Override
+    	    protected void updateItem(Comparator<Task> item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        if (empty || item == null) {
+    	            setText("");
+    	        } else if (item instanceof edu.westga.cs1302.task_tracker.model.Ascending) {
+    	            setText("Ascending (LOW → HIGH)");
+    	        } else {
+    	            setText("Descending (HIGH → LOW)");
+    	        }
+    	    }
+    	});
+    	this.order.setCellFactory(lv -> new javafx.scene.control.ListCell<Comparator<Task>>() {
+    	    @Override
+    	    protected void updateItem(Comparator<Task> item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        if (empty || item == null) {
+    	            setText("");
+    	        } else if (item instanceof edu.westga.cs1302.task_tracker.model.Ascending) {
+    	            setText("Ascending (LOW → HIGH)");
+    	        } else {
+    	            setText("Descending (HIGH → LOW)");
+    	        }
+    	    }
+    	});
+
     }
 }
