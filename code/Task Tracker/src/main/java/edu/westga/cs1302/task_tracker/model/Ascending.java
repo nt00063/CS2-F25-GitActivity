@@ -3,10 +3,9 @@ package edu.westga.cs1302.task_tracker.model;
 import java.util.Comparator;
 
 /**
- * Compares tasks in ascending order of priority (LOW → MEDIUM → HIGH).
- * Lower priority comes first.
+ * Compares tasks in ascending order of priority
  * 
- * @author Noah Toups
+ * @author Noah
  * @version Fall 2025
  */
 public class Ascending implements Comparator<Task> {
@@ -16,7 +15,7 @@ public class Ascending implements Comparator<Task> {
         if (first == null || second == null) {
             throw new IllegalArgumentException("Tasks cannot be null");
         }
-
-        return first.getPriority().compareTo(second.getPriority());
+        return -first.getPriority().compareTo(second.getPriority());
     }
 }
+
