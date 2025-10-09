@@ -90,7 +90,9 @@ public class MainWindow {
     public void initialize() {
     	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
     	this.priority.setValue(this.priority.getItems().get(0));
-    	this.order.getItems().addAll(new edu.westga.cs1302.task_tracker.model.Ascending(), new edu.westga.cs1302.task_tracker.model.Descending());
+    	this.order.getItems().add(new edu.westga.cs1302.task_tracker.model.Ascending());
+    	this.order.getItems().add(new edu.westga.cs1302.task_tracker.model.Descending());
+
     	this.order.setPromptText("Select order...");
 
     	this.order.setButtonCell(new javafx.scene.control.ListCell<Comparator<Task>>() {
