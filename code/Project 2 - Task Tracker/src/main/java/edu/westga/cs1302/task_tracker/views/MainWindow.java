@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 import edu.westga.cs1302.task_tracker.model.Ascending;
 import edu.westga.cs1302.task_tracker.model.Descending;
+import edu.westga.cs1302.task_tracker.model.NameAscending;
+import edu.westga.cs1302.task_tracker.model.NameDescending;
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 import edu.westga.cs1302.task_tracker.model.TaskUtility;
@@ -145,6 +147,8 @@ public class MainWindow {
     	this.priority.setValue(this.priority.getItems().get(0));
     	this.order.getItems().add(new Ascending());
     	this.order.getItems().add(new Descending());
+    	this.order.getItems().add(new NameAscending());
+    	this.order.getItems().add(new NameDescending());
     	this.priority.setValue(this.priority.getItems().get(0));
     }
     
