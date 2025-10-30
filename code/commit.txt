@@ -1,3 +1,86 @@
+commit 7a4e136c4a1677435f2a60107d307e63c0cdf188
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:13:19 2025 -0400
+
+    Project 2 Cleanup
+    
+    1) Fixed checkstyle warnings
+    2) The display description box was editable so I fixed that
+
+commit 9f2b2d3b8096006bbe157d737caffce73cf656ff
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:07:37 2025 -0400
+
+    Project 2 - 4B
+    
+    1) I had already implemented the selectSubtask in 3C
+    2) Linked Subtask ListView interaction to popup alert displaying subtask name, description, and priority
+
+commit 2d81d06e0863bbc604b0d260defc2769b6ae108c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:03:21 2025 -0400
+
+    Project 2 - 4A
+    
+    1) Added Add Subtask button, Subtasks label, and ListView for the subtask display
+
+commit 231c3dafd340029736a7c85ff7cbd163285d93c6
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:52:51 2025 -0400
+
+    Project 2 - 3C
+    
+    1) Added methods addSubtask() and selectSubtask()
+
+commit 22cdd4a5bf5d978b44786d9455ba848ee1bd1482
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:41:44 2025 -0400
+
+    Project 2 - 3B
+    
+    1) Created ContainerTask class and updated Task class to support it
+
+commit 3bd1e5c7903bb8db40bdbd7a58e25cd788053606
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:22:33 2025 -0400
+
+    Project 2 - 3A
+    
+    1) Updated MainWindows by adding tub task button and displaying list of subtasks
+
+commit 1851bb3e8d9725cdc6dde1025109ec7d82db4f08
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:11:13 2025 -0400
+
+    Project 2 - 2B
+    
+    1) Added the new comparator options into the combobox
+
+commit 6e3677329985dbf3b19e4d48dff275be6deb1a13
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:04:09 2025 -0400
+
+    Project 2 - 2A
+    
+    1) Updated current comparators and created new comparators to sort by name
+
+commit 89034e51c7d68ca7bf04961bda0835a53edd543c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 20:53:43 2025 -0400
+
+    Project 2 - 1A
+    
+    1) Created a resortTasks helper that updates the priority sorting
+
+commit 87201dbc9beeda070d3583cd3b9b96ed3fa43728
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 23 09:48:20 2025 -0400
+
+    Add Base Project 2
+    
+    1) Adding the project folder into code
+    2) Imported into eclipse
+
 commit 108b10d6c37acdbb6d37bfcafb85a90bb64315a2
 Author: Noah Toups <nt00063@my.westga.edu>
 Date:   Thu Oct 9 16:18:52 2025 -0400
