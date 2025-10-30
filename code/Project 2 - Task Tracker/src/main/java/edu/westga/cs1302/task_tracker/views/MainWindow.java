@@ -1,8 +1,10 @@
 package edu.westga.cs1302.task_tracker.views;
 
 import java.util.Comparator;
+import java.util.List;
 
 import edu.westga.cs1302.task_tracker.model.Ascending;
+import edu.westga.cs1302.task_tracker.model.ContainerTask;
 import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.NameAscending;
 import edu.westga.cs1302.task_tracker.model.NameDescending;
@@ -37,6 +39,8 @@ public class MainWindow {
     @FXML private TextField selectedPriority;
     @FXML private ListView<Task> tasks;
     @FXML private ComboBox<Comparator<Task>> order;
+    
+    // Step 3A fields (kept even if FXML isn’t connected yet)
     @FXML private ListView<Task> subtasks;
     @FXML private Button addSubtask;
 
@@ -54,7 +58,6 @@ public class MainWindow {
     void addTask(ActionEvent event) {
     	try {
     		this.tasks.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
-    		this.resortTasks();
     	} catch (IllegalArgumentException error) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setContentText(error.getMessage());
@@ -76,6 +79,13 @@ public class MainWindow {
     	if (selectedTask != null) {
     		this.selectedPriority.setText(selectedTask.getPriority().toString());
     		this.selectedDescription.setText(selectedTask.getDescription());
+
+    		// Step 3C: display subtasks (if any)
+    		if (this.subtasks != null) {
+    			this.subtasks.getItems().clear();
+    			List<Task> subs = selectedTask.getSubTasks();
+    			this.subtasks.getItems().addAll(subs);
+    		}
     	}
     }
 
@@ -106,7 +116,6 @@ public class MainWindow {
     	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
     	if (selectedTask != null) {
     		selectedTask.setDescription(this.selectedDescription.getText());
-    		this.resortTasks();
     	}
     }
 
@@ -138,31 +147,76 @@ public class MainWindow {
     	}
     }
 
+    /** Add a subtask to the currently selected task.
+     * 
+     * @precondition a task must be selected in the main list
+     * @postcondition the selected task is replaced with a ContainerTask that includes the new subtask
+     * 
+     * @param event not used
+     */
+    @FXML
+    void addSubtask(ActionEvent event) {
+    	Task parentTask = this.tasks.getSelectionModel().getSelectedItem();
+    	if (parentTask == null) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setContentText("Please select a task before adding a subtask.");
+    		alert.showAndWait();
+    		return;
+    	}
+
+    	try {
+    		Task sub = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+    		Task updatedParent = parentTask.addTask(sub);
+
+    		int index = this.tasks.getSelectionModel().getSelectedIndex();
+    		this.tasks.getItems().set(index, updatedParent);
+
+    		this.tasks.getSelectionModel().select(updatedParent);
+    		this.selectTask(null); // refresh subtask list
+    	} catch (IllegalArgumentException error) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setContentText(error.getMessage());
+    		alert.showAndWait();
+    	}
+    }
+
+    /** Display the selected subtask’s details in an alert popup.
+     * 
+     * @precondition a subtask must be selected in the subtasks list
+     * @postcondition a popup alert shows the name, description, and priority of the selected subtask
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
+     */
+    @FXML
+    void selectSubtask(MouseEvent event) {
+    	if (this.subtasks == null) {
+    		return;
+    	}
+    	Task sub = this.subtasks.getSelectionModel().getSelectedItem();
+    	if (sub != null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Subtask Details");
+    		alert.setHeaderText(sub.getName());
+    		alert.setContentText("Priority: " + sub.getPriority() + "\n\nDescription:\n" + sub.getDescription());
+    		alert.showAndWait();
+    	}
+    }
+
     /** Perform any needed initialization of UI components and underlying objects.
      * 
      * @precondition none
      * @postcondition none
-     * 
      */
     @FXML
     public void initialize() {
     	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
     	this.priority.setValue(this.priority.getItems().get(0));
-    	this.order.getItems().add(new Ascending());
-    	this.order.getItems().add(new Descending());
-    	this.order.getItems().add(new NameAscending());
-    	this.order.getItems().add(new NameDescending());
+    	this.order.getItems().addAll(
+    			new Ascending(),
+    			new Descending(),
+    			new NameAscending(),
+    			new NameDescending()
+    	);
     	this.priority.setValue(this.priority.getItems().get(0));
-    }
-    
-    /** Resort tasks based on the currently selected ordering.
-     * 
-     * @precondition none
-     * @postcondition tasks in the listview are sorted based on the provided ordering.
-     */
-    private void resortTasks() {
-    	if (this.order != null && this.order.getValue() != null) {
-    		this.tasks.getItems().sort(this.order.getValue());
-    	}
     }
 }
