@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import edu.westga.cs1302.task_tracker.model.Ascending;
-import edu.westga.cs1302.task_tracker.model.ContainerTask;
 import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.NameAscending;
 import edu.westga.cs1302.task_tracker.model.NameDescending;
@@ -209,14 +208,15 @@ public class MainWindow {
      */
     @FXML
     public void initialize() {
-    	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
-    	this.priority.setValue(this.priority.getItems().get(0));
-    	this.order.getItems().addAll(
-    			new Ascending(),
-    			new Descending(),
-    			new NameAscending(),
-    			new NameDescending()
-    	);
-    	this.priority.setValue(this.priority.getItems().get(0));
+        this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
+        this.priority.setValue(this.priority.getItems().get(0));
+
+        this.order.getItems().add(new Ascending());
+        this.order.getItems().add(new Descending());
+        this.order.getItems().add(new NameAscending());
+        this.order.getItems().add(new NameDescending());
+
+        this.priority.setValue(this.priority.getItems().get(0));
     }
+
 }
