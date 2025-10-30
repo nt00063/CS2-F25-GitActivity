@@ -172,7 +172,7 @@ public class MainWindow {
     		this.tasks.getItems().set(index, updatedParent);
 
     		this.tasks.getSelectionModel().select(updatedParent);
-    		this.selectTask(null); // refresh subtask list
+    		this.selectTask(null);
     	} catch (IllegalArgumentException error) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setContentText(error.getMessage());
