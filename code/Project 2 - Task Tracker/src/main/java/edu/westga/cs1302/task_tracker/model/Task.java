@@ -125,4 +125,35 @@ public class Task {
 	public String toString() {
 		return this.name;
 	}
+	
+    /** Returns a list of subtasks for this task.
+     * 
+     * @precondition none
+     * @postcondition none
+     * 
+     * @return an empty list of Task objects by default
+     */
+    public java.util.List<Task> getSubTasks() {
+        return java.util.Collections.emptyList();
+    }
+
+    /** Adds a subtask to this task.
+     *  If this task does not already contain subtasks, a new ContainerTask
+     *  will be created containing this task and the provided subtask.
+     * 
+     * @precondition subtask != null
+     * @postcondition none
+     * 
+     * @param subtask the subtask to add
+     * @return a new ContainerTask that contains the subtask
+     */
+    public Task addTask(Task subtask) {
+        if (subtask == null) {
+            throw new IllegalArgumentException("subtask must not be null");
+        }
+        ContainerTask container = new ContainerTask(this.getName(), this.getDescription(), this.getPriority());
+        container.addTask(subtask);
+        return container;
+    }
+
 }
