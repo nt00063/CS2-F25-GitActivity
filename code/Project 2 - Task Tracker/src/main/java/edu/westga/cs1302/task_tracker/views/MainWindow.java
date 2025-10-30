@@ -49,6 +49,7 @@ public class MainWindow {
     void addTask(ActionEvent event) {
     	try {
     		this.tasks.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
+    		this.resortTasks();
     	} catch (IllegalArgumentException error) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setContentText(error.getMessage());
@@ -100,6 +101,7 @@ public class MainWindow {
     	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
     	if (selectedTask != null) {
     		selectedTask.setDescription(this.selectedDescription.getText());
+    		this.resortTasks();
     	}
     }
 
@@ -144,5 +146,16 @@ public class MainWindow {
     	this.order.getItems().add(new Ascending());
     	this.order.getItems().add(new Descending());
     	this.priority.setValue(this.priority.getItems().get(0));
+    }
+    
+    /** Resort tasks based on the currently selected ordering.
+     * 
+     * @precondition none
+     * @postcondition tasks in the listview are sorted based on the provided ordering.
+     */
+    private void resortTasks() {
+    	if (this.order != null && this.order.getValue() != null) {
+    		this.tasks.getItems().sort(this.order.getValue());
+    	}
     }
 }
