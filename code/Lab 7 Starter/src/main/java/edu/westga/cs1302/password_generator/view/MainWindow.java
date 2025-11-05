@@ -58,4 +58,4 @@ public class MainWindow {
     void generatePassword(ActionEvent event) {
         this.vm.generatePassword();
     }
-}
+} 
