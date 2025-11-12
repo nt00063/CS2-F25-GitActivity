@@ -10,116 +10,155 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/** Manages utilizing the model and makes properties available to bind the UI elements.
+/**
+ * Manages utilizing the model and makes properties available to bind the UI elements.
+ * 
+ * This version has been updated to:
+ * - Validate minimum length
+ * - Store a running list of generated passwords
+ * - Provide an ObservableList for ListView binding
  * 
  * @author CS 1302
  * @version Fall 2025
  */
 public class ViewModel {
-	private StringProperty minimumLength;
-	private BooleanProperty requireDigits;
-	private BooleanProperty requireLowercase;
-	private BooleanProperty requireUppercase;
-	
-	private StringProperty password;
-	private StringProperty errorText;
-	
+
+    private StringProperty minimumLength;
+    private BooleanProperty requireDigits;
+    private BooleanProperty requireLowercase;
+    private BooleanProperty requireUppercase;
+
+    private StringProperty password;
+    private StringProperty errorText;
+
+    /** 
+     * A list containing ALL previously generated passwords.
+     * Used for binding to the ListView in the UI. 
+     */
+    private ObservableList<String> passwordList;
+
     private PasswordGenerator generator;
-	
-	/** Initialize the properties for the viewmodel
-	 */
-	public ViewModel() {
-		this.minimumLength = new SimpleStringProperty("1");
-		this.requireDigits = new SimpleBooleanProperty(false);
-		this.requireLowercase = new SimpleBooleanProperty(false);
-		this.requireUppercase = new SimpleBooleanProperty(false);
-		
-		this.password = new SimpleStringProperty("");
-		this.errorText = new SimpleStringProperty("");
+
+    /**
+     * Initialize the properties for the view model.
+     */
+    public ViewModel() {
+        this.minimumLength = new SimpleStringProperty("1");
+        this.requireDigits = new SimpleBooleanProperty(false);
+        this.requireLowercase = new SimpleBooleanProperty(false);
+        this.requireUppercase = new SimpleBooleanProperty(false);
+
+        this.password = new SimpleStringProperty("");
+        this.errorText = new SimpleStringProperty("");
+
+        this.passwordList = FXCollections.observableArrayList();
 
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
-	}
-
-	/** Return the minimum length property
-	 * 
-	 * @return the minimum length property
-	 */
-	public StringProperty getMinimumLength() {
-		return this.minimumLength;
-	}
-
-	/** Return the require digits property
-	 * 
-	 * @return the require digits property
-	 */
-	public BooleanProperty getRequireDigits() {
-		return this.requireDigits;
-	}
-
-	/** Return the require upper case property
-	 * 
-	 * @return the require upper case property
-	 */
-	public BooleanProperty getRequireUppercase() {
-		return this.requireUppercase;
-	}
-
-	/** Return the require lower case property
-	 * 
-	 * @return the require lower case property
-	 */
-	public BooleanProperty getRequireLowercase() {
-		return this.requireLowercase;
-	}
-
-	/** Return the password property
-	 * 
-	 * @return the password property
-	 */
-	public StringProperty getPassword() {
-		return this.password;
-	}
-
-	/** Return the error text property
-	 * 
-	 * @return the error text property
-	 */
-	public StringProperty getErrorText() {
-		return this.errorText;
-	}
-
-	/** Generates a password using the minimum length, require digit, require lower case, and require upper case property values.
-	 * 
-	 * If a password is successfully generated, the error text property is set to empty string and the password property is set to the password generated.
-	 * 
-	 * If an error is encountered, the password property is set to empty, and the error text property is populated with a message describing the problem.
-	 */
-	public void generatePassword() {
-    	int minimumLength = -1;
-    	this.password.setValue("");
-    	
-    	try {
-    		minimumLength = Integer.parseInt(this.minimumLength.getValue());
-    	} catch (NumberFormatException numberError) {
-    		this.errorText.setValue("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getValue());
-    		return;
-    	}
-    	
-    	try {
-    		this.generator.setMinimumLength(minimumLength);
-    	} catch (IllegalArgumentException invalidLengthError) {
-    		this.errorText.setValue("Invalid Minimum Length: " + invalidLengthError.getMessage());
-    		return;
-    	}
-    	
-    	this.generator.setMustHaveAtLeastOneDigit(this.requireDigits.getValue());
-    	this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.requireLowercase.getValue());
-    	this.generator.setMustHaveAtLeastOneUpperCaseLetter(this.requireUppercase.getValue());
-    	
-    	String password = this.generator.generatePassword();
-    	
-    	this.password.setValue(password);
     }
 
+    /**
+     * Return the minimum length property.
+     * 
+     * @return the minimum length property
+     */
+    public StringProperty getMinimumLength() {
+        return this.minimumLength;
+    }
+
+    /**
+     * Return the require digits property.
+     * 
+     * @return the require digits property
+     */
+    public BooleanProperty getRequireDigits() {
+        return this.requireDigits;
+    }
+
+    /**
+     * Return the require upper case property.
+     * 
+     * @return the require upper case property
+     */
+    public BooleanProperty getRequireUppercase() {
+        return this.requireUppercase;
+    }
+
+    /**
+     * Return the require lower case property.
+     * 
+     * @return the require lower case property
+     */
+    public BooleanProperty getRequireLowercase() {
+        return this.requireLowercase;
+    }
+
+    /**
+     * Return the password property.
+     * 
+     * @return the password property
+     */
+    public StringProperty getPassword() {
+        return this.password;
+    }
+
+    /**
+     * Return the error text property.
+     * 
+     * @return the error text property
+     */
+    public StringProperty getErrorText() {
+        return this.errorText;
+    }
+
+    /**
+     * Returns the observable list of all generated passwords.
+     * 
+     * @return ObservableList of passwords
+     */
+    public ObservableList<String> passwordListProperty() {
+        return this.passwordList;
+    }
+
+    /**
+     * Generates a password using the minimum length, require digit,
+     * require lower case, and require upper case property values.
+     * 
+     * If generation succeeds:
+     *  - errorText is cleared
+     *  - password property is updated
+     *  - newly generated password is added to passwordList
+     * 
+     * If an error is encountered:
+     *  - password property is cleared
+     *  - errorText property is populated
+     */
+    public void generatePassword() {
+        int minimum = -1;
+        this.password.set("");
+
+        try {
+            minimum = Integer.parseInt(this.minimumLength.get());
+        } catch (NumberFormatException nfe) {
+            this.errorText.set("Minimum length must be a positive integer.");
+            return;
+        }
+
+        try {
+            this.generator.setMinimumLength(minimum);
+        } catch (IllegalArgumentException iae) {
+            this.errorText.set("Invalid Minimum Length: " + iae.getMessage());
+            return;
+        }
+
+        this.generator.setMustHaveAtLeastOneDigit(this.requireDigits.get());
+        this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.requireLowercase.get());
+        this.generator.setMustHaveAtLeastOneUpperCaseLetter(this.requireUppercase.get());
+
+        String result = this.generator.generatePassword();
+
+        this.password.set(result);
+        this.errorText.set("");
+        this.passwordList.add(result);
+    }
 }
