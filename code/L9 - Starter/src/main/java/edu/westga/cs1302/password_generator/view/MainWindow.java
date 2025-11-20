@@ -71,13 +71,32 @@ public class MainWindow {
      * (Implementation added in Step 3)
      */
     private void handleSave() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save Password History");
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        File file = chooser.showSaveDialog(this.passwordHistory.getScene().getWindow());
+        if (file != null) {
+            try (PrintWriter writer = new PrintWriter(file)) {
+                for (String password : this.passwordHistory.getItems()) {
+                    writer.println(password);
+                }
+            } catch (IOException error) {
+                Alert alert = new Alert(AlertType.ERROR, "Error saving file.");
+                alert.showAndWait();
+            }
+        }
     }
-
+    
     /**
      * Displays an About popup.
      * (Implementation added in Step 3)
      */
     private void handleAbout() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("Password Generator");
+        alert.setContentText("This project generates secure passwords.\nAuthor: Noah Gabriel Toups");
+        alert.showAndWait();
     }
 
     /**
@@ -85,5 +104,6 @@ public class MainWindow {
      * (Implementation added in Step 3)
      */
     private void handleClose() {
+        ((Node) this.generatePasswordButton).getScene().getWindow().hide();
     }
 }
