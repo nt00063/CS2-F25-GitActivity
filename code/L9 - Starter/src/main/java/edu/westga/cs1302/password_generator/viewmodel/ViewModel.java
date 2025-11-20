@@ -122,5 +122,26 @@ public class ViewModel {
     	
     	this.passwordHistory.add(password);
     }
+	
+	/**
+	 * Determines if the current input state is valid for generating a password.
+	 * 
+	 * @return true if the input is valid, false otherwise
+	 */
+	public boolean isInputValid() {
+	    int length;
+	    try {
+	        length = Integer.parseInt(this.minimumLength.get());
+	    } catch (NumberFormatException error) {
+	        return false;
+	    }
+	    if (length < 1) {
+	        return false;
+	    }
+	    if (!this.requireDigits.get() && !this.requireLowercase.get() && !this.requireUppercase.get()) {
+	        return false;
+	    }
+	    return true;
+	}
 
 }

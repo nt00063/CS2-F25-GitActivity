@@ -56,6 +56,11 @@ public class MainWindow {
         this.minimumLength.textProperty().addListener((observable, oldValue, newValue) -> {
             this.minLengthErrorText.setVisible(!newValue.matches("\\d+") || Integer.parseInt(newValue) == 0);
         });
+        
+        this.minimumLength.textProperty().addListener((obs, oldVal, newVal) -> this.updateGenerateButtonState());
+        this.mustIncludeDigits.selectedProperty().addListener((obs, oldVal, newVal) -> this.updateGenerateButtonState());
+        this.mustIncludeLowerCaseLetters.selectedProperty().addListener((obs, oldVal, newVal) -> this.updateGenerateButtonState());
+        this.mustIncludeUpperCaseLetters.selectedProperty().addListener((obs, oldVal, newVal) -> this.updateGenerateButtonState());
 
         this.generatePasswordButton.setOnAction((event) -> {
             this.vm.generatePassword();
@@ -64,6 +69,13 @@ public class MainWindow {
         this.saveMenuItem.setOnAction(event -> this.handleSave());
         this.aboutMenuItem.setOnAction(event -> this.handleAbout());
         this.closeMenuItem.setOnAction(event -> this.handleClose());
+        
+        this.updateGenerateButtonState();
+    }
+    
+    private void updateGenerateButtonState() {
+        boolean valid = this.vm.isInputValid();
+        this.generatePasswordButton.setDisable(!valid);
     }
 
     /**
