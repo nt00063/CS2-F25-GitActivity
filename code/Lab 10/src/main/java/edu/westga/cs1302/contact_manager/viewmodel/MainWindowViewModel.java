@@ -1,6 +1,8 @@
 package edu.westga.cs1302.contact_manager.viewmodel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.westga.cs1302.contact_manager.model.Contact;
 import javafx.beans.property.ListProperty;
@@ -21,6 +23,9 @@ public class MainWindowViewModel {
 	private StringProperty phoneNumber;
 	private StringProperty searchCriteria;
 	private ListProperty<Contact> contacts;
+
+	private Map<String, Contact> contactsByName;
+	private Map<String, Contact> contactsByPhoneNumber;
 	
 	/** Initialize the MainWindowViewModel
 	 * 
@@ -32,7 +37,11 @@ public class MainWindowViewModel {
 		this.name = new SimpleStringProperty("");
 		this.phoneNumber = new SimpleStringProperty("");
 		this.searchCriteria = new SimpleStringProperty("");
-		this.contacts = new SimpleListProperty<Contact>(FXCollections.observableList(new ArrayList<Contact>()));
+		this.contacts = new SimpleListProperty<Contact>(
+				FXCollections.observableList(new ArrayList<Contact>()));
+
+		this.contactsByName = new HashMap<String, Contact>();
+		this.contactsByPhoneNumber = new HashMap<String, Contact>();
 	}
 	
 	/** Return the name property used when adding a contact
@@ -75,7 +84,7 @@ public class MainWindowViewModel {
 	 * 
 	 * @return the list property containing all contacts added to the system
 	 */
-	public ListProperty getContacts() {
+	public ListProperty<Contact> getContacts() {
 		return this.contacts;
 	}
 	
@@ -85,9 +94,25 @@ public class MainWindowViewModel {
 	 * @postcondition a new contact with name and phone number provided has been added
 	 * 
 	 * @throws IllegalArgumentException if either name or phone number are invalid (see Contact class)
+	 *                                  or if a contact already exists with the same name or phone number
 	 */
 	public void addContact() throws IllegalArgumentException {
-		this.contacts.add(new Contact(this.name.get(), this.phoneNumber.get()));
+		String nameValue = this.name.get();
+		String phoneValue = this.phoneNumber.get();
+
+		// Let Contact enforce format validation
+		if (this.contactsByName.containsKey(nameValue)) {
+			throw new IllegalArgumentException("A contact with this name already exists.");
+		}
+		if (this.contactsByPhoneNumber.containsKey(phoneValue)) {
+			throw new IllegalArgumentException("A contact with this phone number already exists.");
+		}
+
+		Contact newContact = new Contact(nameValue, phoneValue);
+
+		this.contacts.add(newContact);
+		this.contactsByName.put(nameValue, newContact);
+		this.contactsByPhoneNumber.put(phoneValue, newContact);
 	}
 	
 	/** Finds a contact with name or phone number matches provide search criteria
@@ -98,15 +123,24 @@ public class MainWindowViewModel {
 	 * @return A string representation of the contact found.
 	 */
 	public String findContact() {
-		if (!Contact.checkName(this.searchCriteria.get()) && !Contact.checkPhoneNumber(this.searchCriteria.get())) {
-			throw new IllegalArgumentException("Search criteria is not a valid name or phone number");
-		}
-		for (Contact currContact : this.contacts.get()) {
-			if (currContact.getName().equals(this.searchCriteria.get()) || currContact.getPhoneNumber().equals(this.searchCriteria.get())) {
-				return currContact.toString();
+		String criteria = this.searchCriteria.get();
+
+		// Determine whether criteria is a name or phone number
+		if (Contact.checkName(criteria)) {
+			Contact found = this.contactsByName.get(criteria);
+			if (found == null) {
+				return "No contact found.";
 			}
+			return found.toString();
 		}
-		return "No contact found.";
+		if (Contact.checkPhoneNumber(criteria)) {
+			Contact found = this.contactsByPhoneNumber.get(criteria);
+			if (found == null) {
+				return "No contact found.";
+			}
+			return found.toString();
+		}
+
+		throw new IllegalArgumentException("Search criteria is not a valid name or phone number");
 	}
-	
 }
