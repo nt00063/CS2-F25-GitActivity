@@ -24,6 +24,7 @@ public class MainWindowViewModel {
 	private StringProperty searchCriteria;
 	private ListProperty<Contact> contacts;
 
+	// Maps used for efficient lookup and duplicate detection
 	private Map<String, Contact> contactsByName;
 	private Map<String, Contact> contactsByPhoneNumber;
 	
@@ -87,6 +88,22 @@ public class MainWindowViewModel {
 	public ListProperty<Contact> getContacts() {
 		return this.contacts;
 	}
+
+	/** Normalize a phone number string so logically equivalent numbers
+	 *  (such as 123-4567 and 1234567) are treated as the same value.
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @param phoneNumber the phone number to normalize
+	 * @return the normalized phone number, or null if phoneNumber is null
+	 */
+	private String normalizePhoneNumber(String phoneNumber) {
+		if (phoneNumber == null) {
+			return null;
+		}
+		return phoneNumber.replace("-", "");
+	}
 	
 	/** Adds a new contact with name and phone number set by the appropriate property
 	 * 
@@ -99,20 +116,22 @@ public class MainWindowViewModel {
 	public void addContact() throws IllegalArgumentException {
 		String nameValue = this.name.get();
 		String phoneValue = this.phoneNumber.get();
+		String phoneKey = this.normalizePhoneNumber(phoneValue);
 
-		// Let Contact enforce format validation
+		// Duplicate checks before constructing the Contact
 		if (this.contactsByName.containsKey(nameValue)) {
 			throw new IllegalArgumentException("A contact with this name already exists.");
 		}
-		if (this.contactsByPhoneNumber.containsKey(phoneValue)) {
+		if (this.contactsByPhoneNumber.containsKey(phoneKey)) {
 			throw new IllegalArgumentException("A contact with this phone number already exists.");
 		}
 
+		// Let Contact enforce format validation
 		Contact newContact = new Contact(nameValue, phoneValue);
 
 		this.contacts.add(newContact);
 		this.contactsByName.put(nameValue, newContact);
-		this.contactsByPhoneNumber.put(phoneValue, newContact);
+		this.contactsByPhoneNumber.put(phoneKey, newContact);
 	}
 	
 	/** Finds a contact with name or phone number matches provide search criteria
@@ -125,7 +144,7 @@ public class MainWindowViewModel {
 	public String findContact() {
 		String criteria = this.searchCriteria.get();
 
-		// Determine whether criteria is a name or phone number
+		// Search by name
 		if (Contact.checkName(criteria)) {
 			Contact found = this.contactsByName.get(criteria);
 			if (found == null) {
@@ -133,8 +152,11 @@ public class MainWindowViewModel {
 			}
 			return found.toString();
 		}
+
+		// Search by phone number (normalized)
 		if (Contact.checkPhoneNumber(criteria)) {
-			Contact found = this.contactsByPhoneNumber.get(criteria);
+			String phoneKey = this.normalizePhoneNumber(criteria);
+			Contact found = this.contactsByPhoneNumber.get(phoneKey);
 			if (found == null) {
 				return "No contact found.";
 			}
