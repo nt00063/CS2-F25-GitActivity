@@ -1,6 +1,7 @@
 package edu.westga.cs1302.contact_manager.view;
 
 import edu.westga.cs1302.contact_manager.viewmodel.MainWindowViewModel;
+import edu.westga.cs1302.contact_manager.model.Contact;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -16,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainWindow {
     @FXML private Button addContact;
-    @FXML private ListView contacts;
+    @FXML private ListView<Contact> contacts;
     @FXML private Button findContact;
     @FXML private AnchorPane guiPane;
     @FXML private TextField name;
