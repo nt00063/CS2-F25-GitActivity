@@ -38,7 +38,6 @@ public class AddComicWindow {
     public void setViewModel(AddComicViewModel vm) {
         this.viewModel = vm;
 
-        // Bind fields
         this.titleTextField.textProperty().bindBidirectional(vm.titleProperty());
         this.issueNumberTextField.textProperty().bindBidirectional(vm.issueNumberProperty());
     }
@@ -48,8 +47,8 @@ public class AddComicWindow {
         try {
             this.viewModel.addComic();
             ((Stage) this.confirmButton.getScene().getWindow()).close();
-        } catch (Exception error) {
-            // invalid input stays in window — optional alert could be added
+        } catch (IllegalArgumentException | IllegalStateException error) {
+
         }
     }
 

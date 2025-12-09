@@ -6,8 +6,9 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.westga.cs1302.project3.view.MainWindow">
-
+            fx:controller="edu.westga.cs1302.project3.view.MainWindow"
+            prefWidth="600.0"
+            prefHeight="450.0">
 
     <top>
         <HBox spacing="10">
@@ -25,12 +26,13 @@
     </top>
 
     <center>
-        <VBox spacing="20">
+        <VBox spacing="15">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
 
             <children>
+
                 <Label text="Collections:"/>
 
                 <ListView fx:id="collectionsListView" VBox.vgrow="ALWAYS">
@@ -44,6 +46,11 @@
                         </ContextMenu>
                     </contextMenu>
                 </ListView>
+
+                <Button fx:id="removeCollectionButton"
+                        text="Remove Selected Collection"
+                        onAction="#handleRemoveCollection"/>
+
                 <Label text="Comics:"/>
 
                 <ListView fx:id="comicsListView" VBox.vgrow="ALWAYS">
@@ -69,11 +76,9 @@
                                 onAction="#handleRemoveComic"/>
                     </children>
                 </HBox>
+
             </children>
         </VBox>
     </center>
-    <bottom>
-        <HBox/>
-    </bottom>
 
 </BorderPane>
