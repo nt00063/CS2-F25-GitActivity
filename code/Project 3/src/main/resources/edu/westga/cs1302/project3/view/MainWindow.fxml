@@ -8,7 +8,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.westga.cs1302.project3.view.MainWindow">
 
-    <!-- Top: Add new collection -->
+
     <top>
         <HBox spacing="10">
             <padding>
@@ -24,12 +24,12 @@
         </HBox>
     </top>
 
-    <!-- Center: List of collections -->
     <center>
-        <VBox spacing="5">
+        <VBox spacing="20">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
+
             <children>
                 <Label text="Collections:"/>
 
@@ -44,22 +44,36 @@
                         </ContextMenu>
                     </contextMenu>
                 </ListView>
+                <Label text="Comics:"/>
+
+                <ListView fx:id="comicsListView" VBox.vgrow="ALWAYS">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem fx:id="removeComicMenuItem"
+                                          text="Remove Comic"
+                                          onAction="#handleRemoveComic"/>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </ListView>
+
+                <HBox spacing="10">
+                    <children>
+                        <Button fx:id="addComicButton"
+                                text="Add Comic"
+                                onAction="#handleOpenAddComicWindow"/>
+
+                        <Button fx:id="removeComicButton"
+                                text="Remove Selected Comic"
+                                onAction="#handleRemoveComic"/>
+                    </children>
+                </HBox>
             </children>
         </VBox>
     </center>
-
-    <!-- Bottom: remove selected collection -->
     <bottom>
-        <HBox spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <children>
-                <Button fx:id="removeCollectionButton"
-                        text="Remove Selected Collection"
-                        onAction="#handleRemoveCollection"/>
-            </children>
-        </HBox>
+        <HBox/>
     </bottom>
 
 </BorderPane>
