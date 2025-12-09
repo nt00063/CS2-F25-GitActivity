@@ -1,5 +1,7 @@
 package edu.westga.cs1302.project3.view;
 
+import edu.westga.cs1302.project3.model.Collection;
+import edu.westga.cs1302.project3.viewmodel.MainWindowViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
@@ -22,7 +24,7 @@ public class MainWindow {
     private Button addCollectionButton;
 
     @FXML
-    private ListView<String> collectionsListView;
+    private ListView<Collection> collectionsListView;
 
     @FXML
     private Button removeCollectionButton;
@@ -33,6 +35,8 @@ public class MainWindow {
     @FXML
     private MenuItem removeCollectionMenuItem;
 
+    private MainWindowViewModel viewModel;
+
     /**
      * Initializes the main window.
      * 
@@ -41,7 +45,48 @@ public class MainWindow {
      */
     @FXML
     private void initialize() {
-        // ViewModel wiring, bindings, and event handlers will be added later.
+        this.viewModel = new MainWindowViewModel();
+
+        // Bind TextField <-> ViewModel newCollectionName
+        this.newCollectionNameTextField.textProperty()
+            .bindBidirectional(this.viewModel.newCollectionNameProperty());
+
+        // Bind ListView items to the collections list
+        this.collectionsListView.setItems(this.viewModel.getCollections());
+
+        // Keep ViewModel's selectedCollection in sync with ListView selection
+        this.collectionsListView.getSelectionModel().selectedItemProperty()
+            .addListener((observable, oldValue, newValue) -> {
+                this.viewModel.selectedCollectionProperty().set(newValue);
+            });
+    }
+
+    /**
+     * Handles the request to add a new collection.
+     * 
+     * @precondition none
+     * @postcondition if newCollectionName is valid, a new collection is added
+     *                and the name field is cleared
+     */
+    @FXML
+    private void handleAddCollection() {
+        try {
+            this.viewModel.addCollection();
+
+        } catch (IllegalArgumentException exception) {
+
+        }
+    }
+
+    /**
+     * Handles the request to remove the selected collection.
+     * 
+     * @precondition none
+     * @postcondition if a collection was selected, it is removed and selection is cleared
+     */
+    @FXML
+    private void handleRemoveCollection() {
+        this.viewModel.removeSelectedCollection();
+        this.collectionsListView.getSelectionModel().clearSelection();
     }
 }
-

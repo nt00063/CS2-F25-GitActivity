@@ -8,6 +8,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.westga.cs1302.project3.view.MainWindow">
 
+    <!-- Top: Add new collection -->
     <top>
         <HBox spacing="10">
             <padding>
@@ -16,11 +17,14 @@
             <children>
                 <Label text="New Collection Name:"/>
                 <TextField fx:id="newCollectionNameTextField" HBox.hgrow="ALWAYS"/>
-                <Button fx:id="addCollectionButton" text="Add Collection"/>
+                <Button fx:id="addCollectionButton"
+                        text="Add Collection"
+                        onAction="#handleAddCollection"/>
             </children>
         </HBox>
     </top>
 
+    <!-- Center: List of collections -->
     <center>
         <VBox spacing="5">
             <padding>
@@ -28,11 +32,14 @@
             </padding>
             <children>
                 <Label text="Collections:"/>
+
                 <ListView fx:id="collectionsListView" VBox.vgrow="ALWAYS">
                     <contextMenu>
                         <ContextMenu fx:id="collectionsContextMenu">
                             <items>
-                                <MenuItem fx:id="removeCollectionMenuItem" text="Remove Collection"/>
+                                <MenuItem fx:id="removeCollectionMenuItem"
+                                          text="Remove Collection"
+                                          onAction="#handleRemoveCollection"/>
                             </items>
                         </ContextMenu>
                     </contextMenu>
@@ -41,13 +48,16 @@
         </VBox>
     </center>
 
+    <!-- Bottom: remove selected collection -->
     <bottom>
         <HBox spacing="10">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
             <children>
-                <Button fx:id="removeCollectionButton" text="Remove Selected Collection"/>
+                <Button fx:id="removeCollectionButton"
+                        text="Remove Selected Collection"
+                        onAction="#handleRemoveCollection"/>
             </children>
         </HBox>
     </bottom>
