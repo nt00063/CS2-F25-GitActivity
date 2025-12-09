@@ -51,6 +51,11 @@ public class MainWindow {
         this.newCollectionNameTextField.textProperty()
             .bindBidirectional(this.viewModel.newCollectionNameProperty());
 
+        // Disable add button when name is empty
+        this.addCollectionButton.disableProperty().bind(
+            this.viewModel.newCollectionNameProperty().isEmpty()
+        );
+
         // Bind ListView items to the collections list
         this.collectionsListView.setItems(this.viewModel.getCollections());
 
