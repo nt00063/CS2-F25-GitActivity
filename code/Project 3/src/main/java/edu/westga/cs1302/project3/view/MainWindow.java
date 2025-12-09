@@ -105,6 +105,11 @@ public class MainWindow {
 
         this.searchIssueTextField.textProperty()
             .bindBidirectional(this.viewModel.searchIssueNumberProperty());
+
+        this.searchComicButton.disableProperty().bind(
+            this.viewModel.searchTitleProperty().isEmpty()
+                .or(this.viewModel.searchIssueNumberProperty().isEmpty())
+        );
     }
 
     /**
