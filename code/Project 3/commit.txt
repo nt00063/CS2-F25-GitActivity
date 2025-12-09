@@ -1,0 +1,695 @@
+commit 96dbaf87f5c1bc33feeba7694fbfe76145d0b152
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Mon Dec 1 19:40:43 2025 -0500
+
+    New TestFindContact
+    
+    1) Added find contacts tests for MainWindowViewModel
+
+commit 11216defe6cff61ecd33579e92dc0c06b8f0b59f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Mon Dec 1 19:27:05 2025 -0500
+
+    New TestAddContact
+    
+    1) tests including duplicate detection
+
+commit 158f842d5cb97b4be6133dc9b2fcafa58e170773
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Mon Dec 1 19:17:26 2025 -0500
+
+    Add TestConstructor
+    
+    1) Created testInitialState to test inside the new TestConstructor class
+
+commit 1b92bb43a32fe0c7aae8bd8368eb2ed4a2c7df75
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Mon Dec 1 19:00:30 2025 -0500
+
+    Update MainWindowViewModel
+    
+    1) Added map-based lookup and duplicate checking
+
+commit 38755d252e4f2463ed9af840874340bc8a2d8429
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Mon Dec 1 18:50:54 2025 -0500
+
+    Add Starter Lab 10
+    
+    1) Added Lab 10 into code folder and imported it into eclipse
+
+commit f9188a2377e5c2a34ebc114612087d3cfc9c56ed
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Nov 20 02:15:45 2025 -0500
+
+    Test Class
+    
+    1) Added a TestIsInputValid class to test the additions made to the viewmodel
+
+commit 9ec3afbdc8ea82f16e3d5d744d10629a6f14daf3
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Nov 20 01:53:54 2025 -0500
+
+    Input Validation
+    
+    1) Added input validation
+    2) Added logic to disable/enable the generate password button
+
+commit 1d813058557d7b29790948c911fc648d6bf100a4
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Nov 20 01:47:13 2025 -0500
+
+    Implement Actions
+    
+    1) Implemented the save, about, and close menu actions that were added last step
+
+commit f9c87d16914e464ddc99ad3d5eaf25ddd6a31c75
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Nov 20 01:42:34 2025 -0500
+
+    Update MainWindow
+    
+    1) Added the new fields to main window along with handlers
+
+commit dc906d59af2844aa23560ff52c30566e00ce064b
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Nov 20 01:37:40 2025 -0500
+
+    Add Menu FXML
+    
+    1) Added the menu on the popup window and fxml
+
+commit c5bffd79cda0a5aac53f80e6bc0b58c89266ce5e
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 12 19:39:57 2025 -0500
+
+    Update and Add Test Class
+    
+    1) Updated the test classes and added a new one to test PasswordList
+
+commit d6427f671b1cb2a3c848fb599259c67dd85e4993
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 12 19:24:04 2025 -0500
+
+    Update MainWindow
+    
+    1) Added regex validation, listview binding, and event handling
+
+commit b625406edb242dfdbd11cc65938b9cdab40001b0
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 12 18:52:23 2025 -0500
+
+    Update ViewModel
+    
+    1) Added observable password history and logic to ViewModel
+
+commit 8dea5e8e3bc4b757528920309fc3312c5c2edfad
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 12 18:47:56 2025 -0500
+
+    Add Starter Lab 8
+    
+    1) Added the starter lab 8 into the code folder and imported into eclipse
+
+commit 86936979ff1f7bdd0225a7e47208fecb22fe9cba
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 5 11:23:46 2025 -0500
+
+    Create Test Class
+    
+    1) Created Test Class for new ViewModel class
+
+commit 384a3b6781734445efb06feff8e029a1b2b3d3c1
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 5 11:16:45 2025 -0500
+
+    Modify MainWindow
+    
+    1) Modified MainWindw.java to handle the databinding and calls to handle new class
+
+commit d14ba79dee5c1443fc8a49d1a2642b27fa477763
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 5 11:13:56 2025 -0500
+
+    Create ViewModel
+    
+    1) Created the PasswordViewModel class to implement the property objects
+
+commit d39813647d43b315c49b3a978a0736b06248ea14
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Nov 5 10:39:53 2025 -0500
+
+    Add Lab 7 Starter
+    
+    1) Added Lab 7 into /code and imported into eclipse
+
+commit 00f704a0f2677e7a072cd46162e6d4f6df9b9c35
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:33:45 2025 -0400
+
+    Project 2 Test
+    
+    1) Added and updating any relevant tests needed
+
+commit 7a4e136c4a1677435f2a60107d307e63c0cdf188
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:13:19 2025 -0400
+
+    Project 2 Cleanup
+    
+    1) Fixed checkstyle warnings
+    2) The display description box was editable so I fixed that
+
+commit 9f2b2d3b8096006bbe157d737caffce73cf656ff
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:07:37 2025 -0400
+
+    Project 2 - 4B
+    
+    1) I had already implemented the selectSubtask in 3C
+    2) Linked Subtask ListView interaction to popup alert displaying subtask name, description, and priority
+
+commit 2d81d06e0863bbc604b0d260defc2769b6ae108c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 22:03:21 2025 -0400
+
+    Project 2 - 4A
+    
+    1) Added Add Subtask button, Subtasks label, and ListView for the subtask display
+
+commit 231c3dafd340029736a7c85ff7cbd163285d93c6
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:52:51 2025 -0400
+
+    Project 2 - 3C
+    
+    1) Added methods addSubtask() and selectSubtask()
+
+commit 22cdd4a5bf5d978b44786d9455ba848ee1bd1482
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:41:44 2025 -0400
+
+    Project 2 - 3B
+    
+    1) Created ContainerTask class and updated Task class to support it
+
+commit 3bd1e5c7903bb8db40bdbd7a58e25cd788053606
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:22:33 2025 -0400
+
+    Project 2 - 3A
+    
+    1) Updated MainWindows by adding tub task button and displaying list of subtasks
+
+commit 1851bb3e8d9725cdc6dde1025109ec7d82db4f08
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:11:13 2025 -0400
+
+    Project 2 - 2B
+    
+    1) Added the new comparator options into the combobox
+
+commit 6e3677329985dbf3b19e4d48dff275be6deb1a13
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 21:04:09 2025 -0400
+
+    Project 2 - 2A
+    
+    1) Updated current comparators and created new comparators to sort by name
+
+commit 89034e51c7d68ca7bf04961bda0835a53edd543c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 29 20:53:43 2025 -0400
+
+    Project 2 - 1A
+    
+    1) Created a resortTasks helper that updates the priority sorting
+
+commit 87201dbc9beeda070d3583cd3b9b96ed3fa43728
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 23 09:48:20 2025 -0400
+
+    Add Base Project 2
+    
+    1) Adding the project folder into code
+    2) Imported into eclipse
+
+commit 108b10d6c37acdbb6d37bfcafb85a90bb64315a2
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 16:18:52 2025 -0400
+
+    Checkstyle Corrections
+    
+    1) Ran checkstyle on each file and fixed any warnings
+
+commit d0513be1bada3eeda0044dc2d6808aa685fa7fc3
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 16:08:05 2025 -0400
+
+    Add TestCompare
+    
+    1) Implemented a TestCompare class for the descending class
+
+commit 616b5bd923810cd97d34610ee718b1997d1c00ef
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 15:54:25 2025 -0400
+
+    Add TestCompare
+    
+    1) Implemented a TestCompare class for the ascending class
+
+commit b490ee796e72e486293da814178e4107ea870980
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 14:56:46 2025 -0400
+
+    Update MainWindow.java
+    
+    1) Added into the initialize method
+
+commit 16fe4f925b24e67aae7d9537ff09378398842460
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 14:52:21 2025 -0400
+
+    Add Descending Class
+    
+    1) Implemented a descending class to compare the order of priority
+
+commit da5b2e1a533fc1089f182d9fedd052c512782883
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 14:49:58 2025 -0400
+
+    Add Ascending Class
+    
+    1) Implemented an ascending class to compare order of priority
+
+commit 292578540bd0eabba397620a62374b021a11b598
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Oct 9 12:04:40 2025 -0400
+
+    Add Lab 6 Base
+    
+    1) Added 'Task Tracker' to /code
+
+commit d6a8106566a20512b321f749696252ff904c044b
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 22:15:01 2025 -0400
+
+    Fixed Checkstyle
+    
+    1) Checkstyle will not work for me after endless amounts of troubleshooting so I fixed what I new by added javadocs to the new test methods
+
+commit c536370c54f53d606a93be4fef336e2f288ae68f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 21:40:00 2025 -0400
+
+    Implemented TestLoadStudent
+    
+    1) Created test that makes sure it reads the load correctly
+    1) Created test that checks if the format is correct
+
+commit 329292b7c65bf62d725333aaf5cfdf0d87b7f837
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 21:21:00 2025 -0400
+
+    Implemented TestSaveStudentData
+    
+    1)Created test that checks if the format is correct
+    2)Created test that checks if entry is null
+
+commit d4f05f8ce218ac3cec3c45edf0f273f64b6a7ea1
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 21:03:04 2025 -0400
+
+    Updated StudentDataPersistanceManager Class
+    
+    1) Fixed the save/load methods to implement the new style
+
+commit 1f570a4deeb0b9596fe4d5b6ed320bd2588e2c94
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 21:01:06 2025 -0400
+
+    Moved Lab 5 into code/
+    
+    1) Moved it from the starter lab into code
+
+commit 2f97352567b10f8aa6ae829ff3132a421586d1a1
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Oct 1 20:38:12 2025 -0400
+
+    Add Base Lab 5
+    
+    1) Imported Lab5Starter
+
+commit f32c2ce05427dcabc4b52e56950e631484f67843
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 23:07:56 2025 -0400
+
+    Test Class for Main Window
+    
+    1) Added tests for a task manager
+
+commit 9441c7c1f03d69b355e2500f661759249fb6f125
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 23:02:45 2025 -0400
+
+    Test Class for Task Util
+    
+    1) Made a test for count tasks by priority
+
+commit 28e9afe8d3d6908e63b016878874d0bc5d5f13ea
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 22:58:41 2025 -0400
+
+    Test Class for Task
+    
+    1) Made a test for task creation and update description
+
+commit cb19e4018c7031649dfd7ee4d3489a8e47e374a1
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 22:17:17 2025 -0400
+
+    Connect Business Logic and UI for Counting Tasks
+    
+    1) Added a method to display the count
+
+commit a3f8deb7a94edaa1cb9737f2b2c84e47719f788a
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 22:12:47 2025 -0400
+
+    Business Logic for Counting Number of Tasks
+    
+    1) Added a Method into the utility class
+
+commit 1c33e0a8cfb8699518407871b32d7dacf03da02d
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 22:05:27 2025 -0400
+
+    Implementing UI
+    
+    1) Added UI for priority and count
+
+commit 17327b2fc2516a4e337bd2a3441c3f455dfa0375
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 22:01:01 2025 -0400
+
+    Implement UI for Removing Task from the List
+    
+    1) Added the handleRemoveTask method
+
+commit 96e381186f2a683475bf0fac5c8d049d8efc079f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:56:25 2025 -0400
+
+    UI for Removing Task from the List
+    
+    1) Added remove task button
+
+commit 5b2d8e687b0118464099ebc96bbcbfa27ada6a1a
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:52:32 2025 -0400
+
+    Connect Business Logic and UI
+    
+    1) Added a handleUpdateDescription method
+
+commit ac701f3b2d42070a646e6e1d3f7f5dc4eb353fe4
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:48:03 2025 -0400
+
+    Business Logic for Updating Description
+    
+    1) Added a setMethod
+
+commit 682eb7397f4cb34608c83604e6baa3ae9644b94f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:46:20 2025 -0400
+
+    Implementing UI
+    
+    1) Added text area and button
+
+commit ccb1e581c2527882f40b134581a06301e3c11bed
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:30:52 2025 -0400
+
+    Connect UI to Business Logic for Adding Task
+    
+    1) Implemented a method for displaying a task
+
+commit 09965f76fe4eabb081a75289a2a27596f633539c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:26:40 2025 -0400
+
+    UI for Adding Task
+    
+    1) Added more text spots for outputs
+
+commit 027dd8f57fe81281986b78790cfaf37e730fd45f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 21:07:24 2025 -0400
+
+    Connect UI to Business Logic for Adding Task
+    
+    1) Implemented a method that allows the use of the add task button
+
+commit e6ffee364e72c4dd4386b67c0c81b379812d2725
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 20:40:47 2025 -0400
+
+    Business Logic for Storing a Task
+    
+    1) Implemented the test class
+
+commit 3914a5ce1f261afba599da7b062964570153a3cf
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 20:32:27 2025 -0400
+
+    UI for Adding Tasks
+    
+    1) Created a structure on SceneBuilder and added empty methods
+
+commit 7e8d69627d9e0546f2a4cf74002192b33a49cd87
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Sat Sep 27 19:57:12 2025 -0400
+
+    Set Up Template
+    
+    1) Created packages and classes to fill as I complete tasks
+
+commit 8031713dbfd79f49d590b92ff960bcc12117b9e4
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 25 09:43:45 2025 -0400
+
+    Added Base Project
+    
+    1) Added JavaFX Sample Starter with JUnit for Project 1
+
+commit c8145f816bcc0fa80d5d56f2e8da5e42685d7640
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 25 09:36:38 2025 -0400
+
+    Added Project Base
+    
+    1) Added StarterLab5 to code
+
+commit 8904dea13364486e967e41c17bfcb871e93e3a2a
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 20:50:13 2025 -0400
+
+    Created TestBillCalculator class
+    
+    1) Made 7 test cases for list and array from the BillCalculator class
+    2) Completed all checkstyle warnings
+
+commit d9abc9f44267999c708944dd8abea7d31482abfd
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 19:40:38 2025 -0400
+
+    Updated BillView
+    
+    1) Updated the class after the changes made from BillCalculator
+
+commit 80ccde08534046452312a120702c49b46fd9e8fe
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 19:10:11 2025 -0400
+
+    Safer Data Class
+    
+    1) Made the fields of BillItem class final
+
+commit e80f4afea07bc5285e27036491b2925ba158bf70
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 11 18:59:11 2025 -0400
+
+    Adding Projec Base
+    
+    1) Adding starterLab4 to \code
+
+commit 0a07b4913ea5ac3fd77a6f5bf1684bd39388a06c
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 10 22:40:26 2025 -0400
+
+    Updating Code to Use
+    
+    1) Connected the components and implemented the methods
+
+commit 63225d966d78d5bf0339b8ae492014889cca8c7e
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 10 21:56:34 2025 -0400
+
+    Creating fxml class
+    
+    1) Used Scenebuilder to create the desired window
+    2) Added the proper code to MainWindow.java
+
+commit df025e72622a1dd7b4f7f2c5b2c3af7cabf93298
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 4 13:06:48 2025 -0400
+
+    Combining Projects for Lab 3
+    
+    1) Fixed packages and added classes
+
+commit 8925fe4b07986cd4a921b7f5b0bc917c991d1816
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 4 12:28:36 2025 -0400
+
+    Adding Base Project
+    
+    1) Added JavaFX Sample Starter into code
+
+commit bb8a35fa2d615a0b0ea2f6e1825b18b69adfadc1
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Sep 4 12:04:36 2025 -0400
+
+    Adding Base Project
+    
+    1) Added Bill to eclipse
+
+commit 0f1a6415856d023e4fbf54b7861b412f70fda451
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 20:13:50 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextMultipleItems to ensure outputs with multiple items work
+    2) Solved all of the checkstyle issues
+
+commit 26d0c72429ee210c5cd102f4f9f89104b09e8890
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:58:16 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextOneItem to ensure outputs with one item
+
+commit dee960215f1f11244b95746155a7b93a94a9355b
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:54:44 2025 -0400
+
+    Adding Junit Tests to TestGetText
+    
+    1) Added a testGetTextWithEmptyBill to ensure it can be empty
+
+commit 2fc53d57806fd119b66f45efdb351720c2657373
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:45:57 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorNegativeAmount to throw when the amount is negative
+
+commit fd374f8307714d4f293b337d2306c074af3307cb
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:44:09 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorZeroAmount to throw when the amount is zero
+
+commit 0669be83517441188804953513442c6b40fce139
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:41:32 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testConstructorNullName to make sure it is thrown when name is null
+
+commit 6a983de895f3a7f82199efb7a3cff97e9b8fe4cc
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:39:05 2025 -0400
+
+    Adding JUnit Tests to TestConstructor
+    
+    1) Added a testValidConstructor to make sure it works
+
+commit f33afe24c20701c696c3bace1eaa1c7ee06924f7
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Sep 3 19:33:43 2025 -0400
+
+    Adding JUnit Tests to TestAddItem
+    
+    1) Tested that a null item fails
+    2) Tested that adding an item works
+
+commit 81eed7e4d004b18b978f876f47bb10ddb8c03d50
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Thu Aug 28 12:09:16 2025 -0400
+
+    Adding Project Base
+    
+    1) Added the Lab 2 into \code
+
+commit b168daa306376e3ff4fb808647aa2b173ec5b2b8
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:51:11 2025 -0400
+
+    Upload Git Log
+    
+    1) Put the txt file inside of lab 1
+
+commit 1092512ffecdc1ac7705fd40f8f25bfbf50905b8
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:36:29 2025 -0400
+
+    Lab 1 Edits
+    >
+    > 1) Rearanged the view package with the BillPrinter class
+    > 2) Added constants and replaced magic numbers
+    > 3) Fixed all checkstyle warnings
+
+commit 8c39333fbcb128f6855ab6000eaebb63cab7196e
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 21:28:16 2025 -0400
+
+    Removed Unnecessary Files
+    
+    1) Deleted files on Eclipse that were not needed
+
+commit 08d9438c839f34dd71ec73ceb49c4c84a9a3fe1f
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 27 20:23:52 2025 -0400
+
+    Adding Base Project
+    
+    1)Adding Eclipse project (Lab1) to /code
+
+commit bdb87d934f728c4f6319eb92b584476de17b4f73
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 20 12:33:04 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Eclipse project to /code/
+
+commit c6209f34ecb2fde9cbca96a54d6ecc8ea94e4225
+Author: Noah Toups <nt00063@my.westga.edu>
+Date:   Wed Aug 20 12:12:29 2025 -0400
+
+    Adding Base Project Structure
+
+commit fcfb965712ab914957aa25663e3576b49a329abf
+Author: nt00063 <nt00063@my.westga.edu>
+Date:   Tue Aug 19 10:04:37 2025 -0400
+
+    Initial commit
