@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
  * comics in the currently selected collection, and search criteria for
  * finding a comic by title and issue number.
  * 
- * @author
+ * @author Noah Toups
  * @version Fall 2025
  */
 public class MainWindowViewModel {

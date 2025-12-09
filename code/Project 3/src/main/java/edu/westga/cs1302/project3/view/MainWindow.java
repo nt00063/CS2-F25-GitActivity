@@ -9,6 +9,8 @@ import edu.westga.cs1302.project3.viewmodel.MainWindowViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
@@ -20,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * Codebehind for the main window of the Comic Collection application.
  * 
- * @author CS 1302
+ * @author Noah Toups
  * @version Fall 2025
  */
 public class MainWindow {
@@ -55,6 +57,15 @@ public class MainWindow {
     @FXML
     private MenuItem removeComicMenuItem;
 
+    @FXML
+    private TextField searchTitleTextField;
+
+    @FXML
+    private TextField searchIssueTextField;
+
+    @FXML
+    private Button searchComicButton;
+
     private MainWindowViewModel viewModel;
 
     /**
@@ -88,6 +99,12 @@ public class MainWindow {
             .addListener((observable, oldComic, newComic) -> {
                 this.viewModel.selectedComicProperty().set(newComic);
             });
+
+        this.searchTitleTextField.textProperty()
+            .bindBidirectional(this.viewModel.searchTitleProperty());
+
+        this.searchIssueTextField.textProperty()
+            .bindBidirectional(this.viewModel.searchIssueNumberProperty());
     }
 
     /**
@@ -101,9 +118,13 @@ public class MainWindow {
     private void handleAddCollection() {
         try {
             this.viewModel.addCollection();
-
         } catch (IllegalArgumentException exception) {
-
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Collection Name");
+            alert.setHeaderText(null);
+            alert.setContentText(exception.getMessage());
+            alert.initOwner(this.addCollectionButton.getScene().getWindow());
+            alert.showAndWait();
         }
     }
 
@@ -111,7 +132,8 @@ public class MainWindow {
      * Handles the request to remove the selected collection.
      * 
      * @precondition none
-     * @postcondition if a collection was selected, it is removed and selection is cleared
+     * @postcondition if a collection was selected, it is removed and selection is
+     *                cleared
      */
     @FXML
     private void handleRemoveCollection() {
@@ -129,7 +151,6 @@ public class MainWindow {
      */
     @FXML
     private void handleOpenAddComicWindow() {
-        // Do nothing if no collection is selected
         if (this.viewModel.selectedCollectionProperty().get() == null) {
             return;
         }
@@ -168,5 +189,41 @@ public class MainWindow {
     private void handleRemoveComic() {
         this.viewModel.removeSelectedComic();
         this.comicsListView.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * Handles the request to search for a comic by title and issue number and
+     * displays the result in a modal popup window.
+     * 
+     * @precondition none
+     * @postcondition none
+     */
+    @FXML
+    private void handleSearchComic() {
+        try {
+            Comic result = this.viewModel.searchComic();
+
+            Alert alert;
+            if (result != null) {
+                alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Comic Found");
+                alert.setHeaderText(null);
+                alert.setContentText(result.toString());
+            } else {
+                alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Comic Not Found");
+                alert.setHeaderText(null);
+                alert.setContentText("No matching comic was found.");
+            }
+            alert.initOwner(this.searchComicButton.getScene().getWindow());
+            alert.showAndWait();
+        } catch (IllegalArgumentException exception) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Search");
+            alert.setHeaderText(null);
+            alert.setContentText(exception.getMessage());
+            alert.initOwner(this.searchComicButton.getScene().getWindow());
+            alert.showAndWait();
+        }
     }
 }

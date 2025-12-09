@@ -10,7 +10,7 @@ import java.util.Map;
  * A lookup is performed by normalizing the comic's title and combining it
  * with its issue number to form a unique key.
  * 
- * @author
+ * @author Noah Toups
  * @version Fall 2025
  */
 public class ComicSearch {
