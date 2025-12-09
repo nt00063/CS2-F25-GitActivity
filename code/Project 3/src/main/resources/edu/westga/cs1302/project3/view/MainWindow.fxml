@@ -77,6 +77,24 @@
                     </children>
                 </HBox>
 
+                <Separator/>
+
+                <Label text="Search for Comic:"/>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label text="Title:"/>
+                        <TextField fx:id="searchTitleTextField" HBox.hgrow="ALWAYS"/>
+
+                        <Label text="Issue:"/>
+                        <TextField fx:id="searchIssueTextField" prefWidth="60"/>
+
+                        <Button fx:id="searchComicButton"
+                                text="Search"
+                                onAction="#handleSearchComic"/>
+                    </children>
+                </HBox>
+
             </children>
         </VBox>
     </center>
