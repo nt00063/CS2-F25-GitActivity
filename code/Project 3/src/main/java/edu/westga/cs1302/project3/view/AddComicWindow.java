@@ -40,6 +40,11 @@ public class AddComicWindow {
 
         this.titleTextField.textProperty().bindBidirectional(vm.titleProperty());
         this.issueNumberTextField.textProperty().bindBidirectional(vm.issueNumberProperty());
+
+        this.confirmButton.disableProperty().bind(
+            vm.titleProperty().isEmpty()
+                .or(vm.issueNumberProperty().isEmpty())
+        );
     }
 
     @FXML
