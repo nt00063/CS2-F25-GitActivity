@@ -1,6 +1,7 @@
 package edu.westga.cs1302.project3.viewmodel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,7 +10,10 @@ import org.junit.jupiter.api.Test;
 import edu.westga.cs1302.project3.model.Collection;
 import edu.westga.cs1302.project3.model.Comic;
 
-class MainWindowViewModelTest {
+/**
+ * Tests for the MainWindowViewModel class.
+ */
+public class MainWindowViewModelTest {
 
     @Test
     void constructorShouldInitializeEmptyState() {
@@ -20,6 +24,8 @@ class MainWindowViewModelTest {
         assertEquals(null, viewModel.selectedCollectionProperty().get());
         assertTrue(viewModel.getComicsForSelectedCollection().isEmpty());
         assertEquals(null, viewModel.selectedComicProperty().get());
+        assertEquals("", viewModel.searchTitleProperty().get());
+        assertEquals("", viewModel.searchIssueNumberProperty().get());
     }
 
     @Test
@@ -100,7 +106,6 @@ class MainWindowViewModelTest {
         viewModel.selectedCollectionProperty().set(collection);
         viewModel.refreshComicsForSelectedCollection();
 
-        // Now clear selection
         viewModel.selectedCollectionProperty().set(null);
         viewModel.refreshComicsForSelectedCollection();
 
@@ -162,10 +167,79 @@ class MainWindowViewModelTest {
         viewModel.selectedCollectionProperty().set(collection);
         viewModel.refreshComicsForSelectedCollection();
 
-        // no selected comic
         viewModel.removeSelectedComic();
 
         assertEquals(1, collection.getComics().size());
         assertEquals(1, viewModel.getComicsForSelectedCollection().size());
+    }
+
+    @Test
+    void searchComicShouldReturnMatchingComic() {
+        MainWindowViewModel viewModel = new MainWindowViewModel();
+
+        Collection marvel = new Collection("Marvel");
+        marvel.addComic(new Comic("Spider-Man", 1));
+        marvel.addComic(new Comic("Spider-Man", 2));
+
+        Collection dc = new Collection("DC");
+        dc.addComic(new Comic("Batman", 1));
+
+        viewModel.getCollections().add(marvel);
+        viewModel.getCollections().add(dc);
+
+        viewModel.searchTitleProperty().set("Spider-Man");
+        viewModel.searchIssueNumberProperty().set("2");
+
+        Comic result = viewModel.searchComic();
+
+        assertEquals("Spider-Man", result.getTitle());
+        assertEquals(2, result.getIssueNumber());
+    }
+
+    @Test
+    void searchComicShouldReturnNullWhenNotFound() {
+        MainWindowViewModel viewModel = new MainWindowViewModel();
+
+        Collection marvel = new Collection("Marvel");
+        marvel.addComic(new Comic("Spider-Man", 1));
+
+        viewModel.getCollections().add(marvel);
+
+        viewModel.searchTitleProperty().set("Batman");
+        viewModel.searchIssueNumberProperty().set("1");
+
+        Comic result = viewModel.searchComic();
+
+        assertNull(result);
+    }
+
+    @Test
+    void searchComicShouldThrowWhenIssueIsNotANumber() {
+        MainWindowViewModel viewModel = new MainWindowViewModel();
+
+        Collection marvel = new Collection("Marvel");
+        marvel.addComic(new Comic("Spider-Man", 1));
+
+        viewModel.getCollections().add(marvel);
+
+        viewModel.searchTitleProperty().set("Spider-Man");
+        viewModel.searchIssueNumberProperty().set("abc");
+
+        assertThrows(IllegalArgumentException.class, () -> viewModel.searchComic());
+    }
+
+    @Test
+    void searchComicShouldThrowWhenIssueIsNonPositive() {
+        MainWindowViewModel viewModel = new MainWindowViewModel();
+
+        Collection marvel = new Collection("Marvel");
+        marvel.addComic(new Comic("Spider-Man", 1));
+
+        viewModel.getCollections().add(marvel);
+
+        viewModel.searchTitleProperty().set("Spider-Man");
+        viewModel.searchIssueNumberProperty().set("0");
+
+        assertThrows(IllegalArgumentException.class, () -> viewModel.searchComic());
     }
 }

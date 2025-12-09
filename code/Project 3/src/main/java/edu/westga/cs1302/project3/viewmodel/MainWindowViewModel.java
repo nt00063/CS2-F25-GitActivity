@@ -2,6 +2,7 @@ package edu.westga.cs1302.project3.viewmodel;
 
 import edu.westga.cs1302.project3.model.Collection;
 import edu.westga.cs1302.project3.model.Comic;
+import edu.westga.cs1302.project3.model.ComicSearch;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,10 +13,11 @@ import javafx.collections.ObservableList;
 /**
  * ViewModel for the main window of the Comic Collection application.
  * 
- * Manages the list of collections, the name for a new collection, and the
- * comics in the currently selected collection.
+ * Manages the list of collections, the name for a new collection, the
+ * comics in the currently selected collection, and search criteria for
+ * finding a comic by title and issue number.
  * 
- * @author CS 1302
+ * @author
  * @version Fall 2025
  */
 public class MainWindowViewModel {
@@ -27,6 +29,11 @@ public class MainWindowViewModel {
     private final ObservableList<Comic> comicsForSelectedCollection;
     private final ObjectProperty<Comic> selectedComic;
 
+    private final StringProperty searchTitle;
+    private final StringProperty searchIssueNumberText;
+
+    private final ComicSearch comicSearch;
+
     /**
      * Creates a new MainWindowViewModel.
      * 
@@ -36,6 +43,8 @@ public class MainWindowViewModel {
      *                && selectedCollectionProperty().get() == null
      *                && getComicsForSelectedCollection().isEmpty()
      *                && selectedComicProperty().get() == null
+     *                && searchTitleProperty().get().equals("")
+     *                && searchIssueNumberProperty().get().equals("")
      */
     public MainWindowViewModel() {
         this.newCollectionName = new SimpleStringProperty("");
@@ -44,6 +53,11 @@ public class MainWindowViewModel {
 
         this.comicsForSelectedCollection = FXCollections.observableArrayList();
         this.selectedComic = new SimpleObjectProperty<>(null);
+
+        this.searchTitle = new SimpleStringProperty("");
+        this.searchIssueNumberText = new SimpleStringProperty("");
+
+        this.comicSearch = new ComicSearch();
     }
 
     /**
@@ -93,6 +107,25 @@ public class MainWindowViewModel {
     }
 
     /**
+     * Gets the property storing the search title for finding a comic.
+     * 
+     * @return the search title property
+     */
+    public StringProperty searchTitleProperty() {
+        return this.searchTitle;
+    }
+
+    /**
+     * Gets the property storing the search issue number as text for finding a
+     * comic.
+     * 
+     * @return the search issue number text property
+     */
+    public StringProperty searchIssueNumberProperty() {
+        return this.searchIssueNumberText;
+    }
+
+    /**
      * Adds a new collection using the current value of the newCollectionName
      * property.
      * 
@@ -114,8 +147,8 @@ public class MainWindowViewModel {
     }
 
     /**
-     * Removes the currently selected collection from the list of collections (if
-     * one is selected).
+     * Removes the currently selected collection from the list of collections if one
+     * is selected.
      * 
      * @precondition none
      * @postcondition if selectedCollectionProperty().get() was in the list, it is
@@ -186,11 +219,43 @@ public class MainWindowViewModel {
      */
     public void removeSelectedComic() {
         Collection selectedCollection = this.selectedCollection.get();
-        Comic selectedComic = this.selectedComic.get();
+        Comic selectedComicValue = this.selectedComic.get();
 
-        if (selectedCollection != null && selectedComic != null) {
-            selectedCollection.removeComic(selectedComic);
+        if (selectedCollection != null && selectedComicValue != null) {
+            selectedCollection.removeComic(selectedComicValue);
             this.refreshComicsForSelectedCollection();
         }
+    }
+
+    /**
+     * Performs a search for a comic using the current searchTitleProperty and
+     * searchIssueNumberProperty values.
+     * 
+     * @return the matching Comic if found, or null otherwise
+     * 
+     * @throws IllegalArgumentException if the issue number text is not a valid
+     *                                  positive integer or if the title is invalid
+     *                                  according to the ComicSearch
+     *                                  preconditions
+     * 
+     * @precondition none
+     * @postcondition none
+     */
+    public Comic searchComic() {
+        String title = this.searchTitle.get();
+        String issueText = this.searchIssueNumberText.get();
+
+        int issueNumber;
+        try {
+            issueNumber = Integer.parseInt(issueText);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("Issue number must be a positive integer", exception);
+        }
+
+        if (issueNumber <= 0) {
+            throw new IllegalArgumentException("Issue number must be a positive integer");
+        }
+
+        return this.comicSearch.findComicByTitleAndIssue(this.collections, title, issueNumber);
     }
 }
